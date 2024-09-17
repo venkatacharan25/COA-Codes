@@ -1,0 +1,26 @@
+org 100h
+start:
+    mov ax, cs
+    mov ds, ax
+    mov al, [dividend]  
+    mov bl, [divisor]
+    xor ah, ah       
+    div bl            
+    mov [quotient], al  
+    mov [remainder], ah 
+    mov al, [quotient]
+    add al, 30h         
+    mov dl, al
+    mov ah, 02h         
+    int 21h          
+    mov al, [remainder]
+    add al, 30h         
+    mov dl, al
+    mov ah, 02h         
+    int 21h      
+    mov ah, 4Ch
+    int 21h
+dividend  db 43         
+divisor   db 05          
+quotient  db 0          
+remainder db 0
