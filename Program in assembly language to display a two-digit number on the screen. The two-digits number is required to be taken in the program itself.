@@ -1,0 +1,17 @@
+ORG 100h           
+MOV DX, OFFSET msg_output   
+MOV AH, 09h                 
+INT 21h                     
+MOV AL, '3'     
+MOV BL, '4'     
+MOV DL, AL      
+MOV AH, 02h     
+INT 21h         
+MOV DL, BL      
+MOV AH, 02h     
+INT 21h         
+EndProgram:
+MOV AH, 4Ch     
+INT 21h         
+
+msg_output DB 'Two-digit number is: $'
